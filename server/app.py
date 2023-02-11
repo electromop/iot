@@ -35,7 +35,7 @@ def index():
 
         bedroom_curt_var=bool_to_str(bedroom['curtains']),
         bedroom_lights_var=bool_to_str(bedroom['lights']),
-        bedroom_temp_var=['temp'],
+        bedroom_temp_var=bedroom['temp'],
 
         kitchenroom_curt_var=bool_to_str(kitchenroom['curtains']),
         kitchenroom_lights_var=bool_to_str(kitchenroom['lights']),
