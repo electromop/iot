@@ -13,24 +13,24 @@
 <body>
     <section>
         <div class="container-md my-5">
+            <div class="row my-1 bg-body-tertiary rounded-2">
+                <h1>Living room</h1>
+            </div>
             <div class="row my-5 bg-body-tertiary rounded-2">
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
-                     <div class="d-flex justify-content-center mt-4">
-                        <h2 id="curtains"></h2>
-                        <script>
-                            document.getElementById("curtains").innerHTML = stats.curtains;
-                        </script>
+                    <div class="d-flex justify-content-center mt-4">
+                        <h2>Temp is {{ livingroom_temp_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check">Toggle</label>
-                    </div>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
                 </div>
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
                     <div class="d-flex justify-content-center mt-4">
-                        <h2>Curtains</h2>
+                        <h2>Curtains are {{ livingroom_curt_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
                         <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
@@ -38,50 +38,85 @@
                     </div>
                 </div>
                 <div class="col-1"></div>
+                <div class="col bg-body-secondary rounded-2 my-2" id="widget">
+                    <div class="d-flex justify-content-center mt-4">
+                        <h2>Lights is {{ livingroom_lights_var }}</h2>
+                     </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row my-1 bg-body-tertiary rounded-2">
+                <h1>Bedroom</h1>
             </div>
             <div class="row my-5 bg-body-tertiary rounded-2">
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
                     <div class="d-flex justify-content-center mt-4">
-                        <h2>Curtains</h2>
+                        <h2>Temp is {{ bedroom_temp_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check-3">Toggle</label>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
+                </div>
+                <div class="col-1"></div>
+                <div class="col bg-body-secondary rounded-2 my-2" id="widget">
+                    <div class="d-flex justify-content-center mt-4">
+                        <h2>Curtains are {{ bedroom_curt_var }}</h2>
+                     </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
                     </div>
                 </div>
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
                     <div class="d-flex justify-content-center mt-4">
-                        <h2>Curtains</h2>
+                        <h2>Lights are {{ bedroom_lights_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check-4">Toggle</label>
-                    </div>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
                 </div>
                 <div class="col-1"></div>
+            <div class="row my-1 bg-body-tertiary rounded-2">
+                <h1>Kitchen</h1>
             </div>
             <div class="row my-5 bg-body-tertiary rounded-2">
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
                     <div class="d-flex justify-content-center mt-4">
-                        <h2>Curtains</h2>
+                        <h2>Temp is {{ kitchenroom_temp_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check-5">Toggle</label>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
+                </div>
+                <div class="col-1"></div>
+                <div class="col bg-body-secondary rounded-2 my-2" id="widget">
+                    <div class="d-flex justify-content-center mt-4">
+                        <h2>Curtains are {{ kitchenroom_curt_var }}</h2>
+                     </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
                     </div>
                 </div>
                 <div class="col-1"></div>
                 <div class="col bg-body-secondary rounded-2 my-2" id="widget">
                     <div class="d-flex justify-content-center mt-4">
-                        <h2>Curtains</h2>
+                        <h2>Lights is {{ kitchenroom_lights_var }}</h2>
                      </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check-6">Toggle</label>
-                    </div>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-primary" for="btn-check-2">Toggle</label>
+                    </div> 
                 </div>
                 <div class="col-1"></div>
             </div>
