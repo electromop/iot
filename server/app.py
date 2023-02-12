@@ -1,5 +1,11 @@
 from flask import Flask, jsonify, render_template
 
+def bool_to_str(condition):
+    if condition == False:
+        return 'disabled'
+    else:
+        return 'enabled'
+
 kitchenroom = {
     'lights':False, 
     'curtains':False, 
@@ -18,12 +24,6 @@ livingroom = {
     }
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-
-def bool_to_str(condition):
-    if condition == False:
-        return 'disabled'
-    else:
-        return 'enabled'
 
 @app.route('/')
 def index():
