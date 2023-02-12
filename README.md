@@ -1,2 +1,2 @@
 # iot
-internet things system
+internet of things single system
