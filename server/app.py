@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, render_template
 
 def bool_to_str(condition):
-    if condition == False:
-        return 'disabled'
+    if type(condition) == bool:
+        if condition == False:
+            return 'disabled'
+        else:
+            return 'enabled'
     else:
-        return 'enabled'
+        return condition
 
 kitchenroom = {
     'lights':False, 
