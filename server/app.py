@@ -45,20 +45,20 @@ def index():
         kitchenroom_temp_var=kitchenroom['temp'],
     )
 
-####################LIVINGROOM###########################
-@app.route('/api/livingroom/<module>')
-def livingroom_cond(module):
-    return jsonify({f'{module}':livingroom[f'{module}']})
+#################### ROOM MODULE CONDITION #######################
+@app.route('/api/<room>/<module>')
+def room_module_cond(module, room):
+    try:
+        return jsonify({f'{module}':globals()[room][f'{module}']})
+    except KeyError:
+        return 'Name Error, there is no room or module with such name'
 
-####################KITCHENROOM###########################
-@app.route('/api/kitchenroom/<module>')
-def kitchenroom_cond(module):
-    return jsonify({f'{module}':kitchenroom[f'{module}']})
-
-####################BEDROOM###########################
-@app.route('/api/bedroom/<module>')
-def bedroom_cond(module):
-    return jsonify({f'{module}':bedroom[f'{module}']})
+@app.route('/api/<room>')
+def room_cond(room):
+    try:
+        return jsonify(globals()[room])
+    except KeyError:
+        return 'Name Error, there is no room with such name'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8090)
