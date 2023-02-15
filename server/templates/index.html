@@ -25,8 +25,10 @@
                         <h3>Temp is {{ livingroom_temp_var }}</h3>
                      </div>
                     <div class="d-flex justify-content-center mb-4">
-                        <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
-                        <label class="btn btn-primary" for="btn-check-1">Toggle</label>
+                        <form method="post" action="/api/livingroom/lights">
+                            <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off" name="action1" value="VALUE1"/>
+                            <label class="btn btn-primary" for="btn-check-1">Toggle</label>
+                        </form>
                     </div> 
                 </div>
                 <div class="col-2"></div>

@@ -9,6 +9,11 @@ def bool_to_str(condition):
     else:
         return condition
 
+def rev_bool(cond):
+    return not cond
+
+str_err = 'Name Error, there is no room or module with such name'
+
 kitchenroom = {
     'lights':False, 
     'curtains':False, 
@@ -46,24 +51,24 @@ def index():
     )
 
 #################### ROOM MODULE CONDITION #######################
-@app.route('/api/get/<room>/<module>')
+@app.route('/api/<room>/<module>', methods=['GET', 'PUT'])
 def get_module_cond(module, room):
-    try:
-        return jsonify({f'{module}':globals()[room][f'{module}']})
-    except KeyError:
-        return 'Name Error, there is no room or module with such name'
+    if request.method == 'POST':
+        try:
+            if request.form.get('action1') == 'VALUE1':
+                globals()[room][f'{module}'] = rev_bool(globals()[room][f'{module}'])
+        except KeyError:
+            return str_err
+    else:
+        try:
+            return jsonify({f'{module}':globals()[room][f'{module}']})
+        except KeyError:
+            return str_err
 
-@app.route('/api/get/<room>')
+@app.route('/api/<room>', methods=['GET'])
 def get_room_cond(room):
     try:
         return jsonify(globals()[room])
-    except KeyError:
-        return 'Name Error, there is no room with such name'
-
-@app.route('/api/put/<room>/<module>')
-def put_module_cond(room, module):
-    try:
-        cond = request.form['module']
     except KeyError:
         return 'Name Error, there is no room with such name'
 
