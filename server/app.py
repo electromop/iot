@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 
 def bool_to_str(condition):
     if type(condition) == bool:
@@ -46,17 +46,24 @@ def index():
     )
 
 #################### ROOM MODULE CONDITION #######################
-@app.route('/api/<room>/<module>')
-def room_module_cond(module, room):
+@app.route('/api/get/<room>/<module>')
+def get_module_cond(module, room):
     try:
         return jsonify({f'{module}':globals()[room][f'{module}']})
     except KeyError:
         return 'Name Error, there is no room or module with such name'
 
-@app.route('/api/<room>')
-def room_cond(room):
+@app.route('/api/get/<room>')
+def get_room_cond(room):
     try:
         return jsonify(globals()[room])
+    except KeyError:
+        return 'Name Error, there is no room with such name'
+
+@app.route('/api/put/<room>/<module>')
+def put_module_cond(room, module):
+    try:
+        cond = request.form['module']
     except KeyError:
         return 'Name Error, there is no room with such name'
 
