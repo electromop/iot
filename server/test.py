@@ -2,16 +2,17 @@ from dataclasses import dataclass
 from typing import Any
 
 @dataclass
-class roomConds:
+class roomData:
     conds: Any
     
     def module(self, m):
         return self.globals()[m]
+    def 
 
 class rooms():
     def roomCreate(string):
         exec("%s = %d" % (string,0))
-        globals()[string] = roomConds
+        globals()[string] = roomData
         print('Комната добавлена!')
 
     def moduleCreate(roomname, modulename):
