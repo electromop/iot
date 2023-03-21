@@ -13,60 +13,74 @@ def bool_to_str(condition):
 def rev_bool(cond):
     return not cond
 
-@dataclass
-class roomCond:
-    lights : bool = False
-    curtains: bool = False
-    temp: float = False       
 
-kitchenroom = roomCond
-bedroom = roomCond
-livingroom = roomCond
+@dataclass
+class Room:
+    module_list : list = []     
+
+    
+    def addModule(self, name=str):
+        self.module_list.append(name)
+        return(f'{name} was successfully added to!')
+
+
+    def delModule(self, name=str):
+        self.module_list.remove(name)
+        return(f'{name} was successfully removed!')
+
+    def allModules(self):
+        map(lambda i: print(i), self.module_list)
+        return(map(self.module_lsit))
+    
+
+kitchenroom = Room
+bedroom = Room
+livingroom = Room
 livingroom.curtains = True
 print(livingroom())
 
 str_err = 'Name Error, there is no room or module with such name'
 
-# app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
-# @app.route('/')
-# def index():
-#     return render_template(
-#         'index.html',
-#         livingroom_curt_var = livingroom.curtains,
-#         livingroom_lights_var = livingroom.lights,
-#         livingroom_temp_var=livingroom['temp'],
+@app.route('/')
+def index():
+    return render_template(
+        'index.html',
+        livingroom_curt_var = livingroom.curtains,
+        livingroom_lights_var = livingroom.lights,
+        livingroom_temp_var=livingroom['temp'],
 
-#         bedroom_curt_var=bool_to_str(bedroom['curtains']),
-#         bedroom_lights_var=bool_to_str(bedroom['lights']),
-#         bedroom_temp_var=bedroom['temp'],
+        bedroom_curt_var=bool_to_str(bedroom['curtains']),
+        bedroom_lights_var=bool_to_str(bedroom['lights']),
+        bedroom_temp_var=bedroom['temp'],
 
-#         kitchenroom_curt_var=bool_to_str(kitchenroom['curtains']),
-#         kitchenroom_lights_var=bool_to_str(kitchenroom['lights']),
-#         kitchenroom_temp_var=kitchenroom['temp'],
-#     )
+        kitchenroom_curt_var=bool_to_str(kitchenroom['curtains']),
+        kitchenroom_lights_var=bool_to_str(kitchenroom['lights']),
+        kitchenroom_temp_var=kitchenroom['temp'],
+    )
 
-# #################### ROOM MODULE CONDITION #######################
-# @app.route('/api/<room>/<module>', methods=['GET', 'PUT'])
-# def get_module_cond(module, room):
-#     if request.method == 'POST':
-#         try:
-#             if request.form.get('action1') == 'VALUE1':
-#                 globals()[room][f'{module}'] = rev_bool(globals()[room][f'{module}'])
-#         except KeyError:
-#             return str_err
-#     else:
-#         try:
-#             return jsonify({f'{module}':globals()[room][f'{module}']})
-#         except KeyError:
-#             return str_err
+#################### ROOM MODULE CONDITION #######################
+@app.route('/api/<room>/<module>', methods=['GET', 'PUT'])
+def get_module_cond(module, room):
+    if request.method == 'POST':
+        try:
+            if request.form.get('action1') == 'VALUE1':
+                globals()[room][f'{module}'] = rev_bool(globals()[room][f'{module}'])
+        except KeyError:
+            return str_err
+    else:
+        try:
+            return jsonify({f'{module}':globals()[room][f'{module}']})
+        except KeyError:
+            return str_err
 
-# @app.route('/api/<room>', methods=['GET'])
-# def get_room_cond(room):
-#     try:
-#         return jsonify(globals()[room])
-#     except KeyError:
-#         return 'Name Error, there is no room with such name'
+@app.route('/api/<room>', methods=['GET'])
+def get_room_cond(room):
+    try:
+        return jsonify(globals()[room])
+    except KeyError:
+        return 'Name Error, there is no room with such name'
 
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0', port=8090)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8090)
